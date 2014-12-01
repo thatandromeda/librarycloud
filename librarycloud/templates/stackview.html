@@ -6,7 +6,7 @@
     <div class="row">
       <p class="lead text-color-normal"><em>What are people at Harvard learning about {{ topic }}?</p>
 
-      <p class="text-color-normal">Or try your own:</p>
+      <p class="text-color-normal">Or try your favorite subject:</p>
       <form action="" method="post">{% csrf_token %}
           {% crispy form %}
           <input type="submit" value="Search subjects" class="btn btn-large" />
