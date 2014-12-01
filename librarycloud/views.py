@@ -5,9 +5,10 @@ from django.views.generic.edit import FormView
 from forms import SubjectsForm
 from search import LibraryCloud
 
-TOPICS = ["Political science", "Computer science", "Economics", "Philology, Modern",
-          "Ethics", "Biotechnology", "Philosophy", "Religion", "American history",
-          "Art"]
+TOPICS = ["Political science", "Computer science", "Economics",
+          "Philology, Modern", "Ethics", "Biotechnology", "Philosophy",
+          "Religion", "American history", "Art", "English language",
+          "Education", "World history", "International relations"]
 
 class StackView(FormView):
     template_name = 'stackview.html'
