@@ -37,3 +37,4 @@ node_modules/
 *.sublime-workspace
 search.py
 staticfiles/
+heroku_secret_key
