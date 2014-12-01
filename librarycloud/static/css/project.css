@@ -7,6 +7,10 @@
   color: #333;
 }
 
+.navbar-brand {
+  padding-left: 0;
+}
+
 .row {
   margin-bottom: 10px;
 }
