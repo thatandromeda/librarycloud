@@ -1,1 +1,1 @@
-web: gunicorn --pythonpath="$PWD/librarycloud" wsgi:application
+web: gunicorn librarycloud.wsgi:application
