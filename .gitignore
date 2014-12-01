@@ -36,3 +36,4 @@ node_modules/
 *.sublime-project
 *.sublime-workspace
 search.py
+staticfiles/

@@ -2,7 +2,14 @@
 
 {% block content %}
   {% for result in results %}
-  	{{ result.title }}
-  	{{ result.stackscore }}
+    <div class="row">
+      <div class="col-sm-6 col-xs-12 titlecard">
+        <h2>{{ result.title }}</h2>
+        StackScore: {{ result.stackscore }}
+      </div>
+      <div class="col-sm-2 col-xs-4 ism1"></div>
+      <div class="col-sm-2 col-xs-4 ism2"></div>
+      <div class="col-sm-2 col-xs-4 ism3"></div>
+    </div>
   {% endfor %}
 {% endblock content %}

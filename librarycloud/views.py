@@ -1,7 +1,4 @@
-from django.http import HttpResponse
 from django.views.generic import TemplateView
-
-import requests
 
 from search import LibraryCloud
 
@@ -10,8 +7,7 @@ class StackView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(StackView, self).get_context_data(**kwargs)
-        lc = LibraryCloud()
-        results = lc.search('women')
+        _ = LibraryCloud()
+        results = _.search('women')
         context['results'] = results.items
         return context
-
