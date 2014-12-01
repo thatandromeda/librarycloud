@@ -1,1 +1,46 @@
 {% extends "base.html" %}
+
+{% block content %}
+
+  <h2>Project and rationale</h2>
+
+  <p>
+    I (Andromeda) was delighted to see, when I got to the Harvard LibraryCloud hackathon
+    (1 December 2014), that there were some half-dozen other women in the room. Yay!
+  </p>
+
+  <p>
+    Then the organizer asked who was there for the tutorial and almost every other
+    woman in the room raised her hand. Sigh.
+  </p>
+
+  <p>
+    My intersectional feminism looks like code, so here's an app to explore popular items
+    in the Harvard library collection. It takes a search term (presently hardcoded to "women"),
+    looks for it in the subject field, and sorts by stackscore (a popularity index running from
+    0 to 100).  It also investigates whether other axes of diversity are represented in these
+    items the Harvard community consider when building their mental models.
+  </p>
+
+  <p>
+    What's there? What's missing?
+  </p>
+
+  <h2>Credits</h2>
+
+  <h3>People</h3>
+
+  <ul>
+    <li>Code: Andromeda Yelton</li>
+    <li>Cataloging: Vernica Downey</li>
+  </ul>
+
+  <h3>Tech</h3>
+
+  <ul>
+    <li>Color scheme from <a href="http://design-seeds.com/index.php/home/entry/global-brights4">design seeds</a></li>
+    <li>CSS from <a href="http://getbootstrap.com/">Bootstrap</a></li>
+    <li>Dead simple Django project running start from <a href="https://github.com/pydanny/cookiecutter-django">cookiecutter-django</a></li>
+  </ul>
+
+{% endblock %}

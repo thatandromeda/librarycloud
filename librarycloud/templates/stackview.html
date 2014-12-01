@@ -1,20 +1,34 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  {% for result in results %}
+  <div id="project">
     <div class="row">
-      <div class="col-sm-6 col-xs-12 titlecard">
-        <h2><span class="badge pull-right">{{ result.stackscore }}</span>{{ result.title }}</h2>
-
-        <ul class="list-unstyled">
-          {% for subject in result.subjects %}
-            <li>{{ subject }}</li>
-          {% endfor %}
-        </ul>
-      </div>
-      <div class="col-sm-2 col-xs-4 ism1 grey"></div>
-      <div class="col-sm-2 col-xs-4 ism2 grey"></div>
-      <div class="col-sm-2 col-xs-4 ism3 grey"></div>
+        <div class="col-sm-6 col-xs-12 titlecard">
+          <h2><span class="badge pull-right">stackscore</span>title</h2>
+          <ul class="list-unstyled">
+            <li>subjects</li>
+          </ul>
+        </div>
+        <div class="col-sm-2 col-xs-4 ism1 grey"></div>
+        <div class="col-sm-2 col-xs-4 ism2 grey"></div>
+        <div class="col-sm-2 col-xs-4 ism3 grey"></div>
     </div>
-  {% endfor %}
+    <hr />
+    {% for result in results %}
+      <div class="row">
+        <div class="col-sm-6 col-xs-12 titlecard">
+          <h2><span class="badge pull-right">{{ result.stackscore }}</span>{{ result.title }}</h2>
+
+          <ul class="list-unstyled">
+            {% for subject in result.subjects %}
+              <li>{{ subject }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="col-sm-2 col-xs-4 ism1 grey"></div>
+        <div class="col-sm-2 col-xs-4 ism2 grey"></div>
+        <div class="col-sm-2 col-xs-4 ism3 grey"></div>
+      </div>
+    {% endfor %}
+  </div>
 {% endblock content %}
