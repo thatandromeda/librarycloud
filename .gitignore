@@ -38,3 +38,4 @@ node_modules/
 search.py
 staticfiles/
 heroku_secret_key
+package.json
