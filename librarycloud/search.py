@@ -1,11 +1,14 @@
 """
-Largely ripped off from Chad Nelson's library for DPLA requests: see
+Provides an internal API for searching Harvard's LibraryCloud and getting only
+the information we need, provided in an easy-to-use format. Largely ripped off
+from Chad Nelson's library for DPLA requests: see
 https://github.com/bibliotechy/DPyLA/blob/master/dpla/api.py
 """
 
 from requests import get
 from requests.compat import urlencode
 
+# LCSH subject headers corresponding to women's studies, etc.
 WOMEN = ["Women's Studies", "Feminism", "Women -- Biography",
          "Women social reformers", "Women and Literature", "Women scientists",
          "Women's Rights", "Women -- civil rights",
@@ -53,6 +56,9 @@ class LibraryCloud():
         return Results(get(request.url).json(), request)
 
 class Request():
+    """
+    Builds properly formatted requests.
+    """
     def __init__(self, query=None):
         # Build individual url fragments for different search criteria
         url_parts = []
@@ -74,8 +80,10 @@ class Request():
 
     def _buildUrl(self, url_parts=None):
         """
-        Wow, this is terrible. At some point should be generalized to make the
-        search type more flexible. Et cetera.
+        Wow, this is terrible now that I've ripped out all the things DPyLA
+        used and reformatted to a totally different set of URL parameters. At
+        some point should be generalized to make the search type more flexible.
+        Et cetera.
         """
         url = self.base_url + '%s&sort.desc=stackscore' % ''.join(url_parts)
         return url
@@ -88,10 +96,12 @@ class Results():
     """
     def __init__(self, response, request):
         self.request = request
-        self.count = response['pagination']['numFound']
+        #self.count = response['pagination']['numFound']
         self.items = []
         if 'items' in response.keys():
             self.items_raw = [item for item in response['items']]
+
+            # Munge the raw results to get info we need in an easy format.
             for item in self.items_raw:
                 info = {}
 
@@ -107,13 +117,13 @@ class Results():
                     item['mods']['extension']['usageData']['stackScore']
                 info['stackscore'] = stackscore
 
-                # Get the subject. Note that this is a list of dicts, where each
+                # Get the subjects. Note that this is a list of dicts, where each
                 # dict can have a variety of attributes; authority and topic are
                 # typical, but not required.
                 subjects_raw = item['mods']['subject']
                 info['subjects_raw'] = subjects_raw
 
-                # Get an actually useful list of subjects
+                # Get an actually useful list of subjects.
                 subjects = []
                 for subject in subjects_raw:
                     if 'authority' in subject.keys():
@@ -136,6 +146,8 @@ class Results():
                                     subjects.append(topic)
                 info['subjects'] = subjects
 
+                # Check to see if any of our subjects belong to the domains of
+                # women's studies, etc.
                 info['ism1'] = False
                 info['ism2'] = False
                 info['ism3'] = False
