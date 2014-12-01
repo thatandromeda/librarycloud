@@ -30,3 +30,9 @@ node_modules/
 
 # Campass
 .sass-cache
+
+# Local
+.DS_Store
+*.sublime-project
+*.sublime-workspace
+search.py

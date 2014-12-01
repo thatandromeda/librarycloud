@@ -19,3 +19,4 @@ django-model-utils==2.2
 psycopg2==2.5.4
 
 # Your custom requirements go here
+requests==2.4.3
