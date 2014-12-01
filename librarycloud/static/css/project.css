@@ -45,3 +45,9 @@ body {
   background-color: #eee;  
 }
 
+.badge {
+  color: #3a5bb0;
+  background-color: white;
+  font-size: 20px;
+  padding: 5px 8px;
+}
