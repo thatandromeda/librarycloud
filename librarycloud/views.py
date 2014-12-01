@@ -1,7 +1,13 @@
+import random 
+
 from django.views.generic.edit import FormView
 
 from forms import SubjectsForm
 from search import LibraryCloud
+
+TOPICS = ["Political science", "Computer science", "Economics", "Philology, Modern",
+          "Ethics", "Biotechnology", "Philosophy", "Religion", "American history",
+          "Art"]
 
 class StackView(FormView):
     template_name = 'stackview.html'
@@ -14,8 +20,11 @@ class StackView(FormView):
         if 'querystring' in self.request.session.keys():
             querystring = self.request.session.pop('querystring')
             results = _.search(querystring)
+            context['topic'] = querystring
         else:
-            results = _.search('women')
+            topic = random.choice(TOPICS)
+            results = _.search(topic)
+            context['topic'] = topic
         context['results'] = results.items
         return context
 

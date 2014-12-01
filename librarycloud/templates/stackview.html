@@ -4,6 +4,9 @@
 {% block content %}
   <div id="project">
     <div class="row">
+      <p class="lead text-color-normal"><em>What are people at Harvard learning about {{ topic }}?</p>
+
+      <p class="text-color-normal">Or try your own:</p>
       <form action="" method="post">{% csrf_token %}
           {% crispy form %}
           <input type="submit" value="Search subjects" class="btn btn-large" />
@@ -46,7 +49,7 @@
     {% empty %}
       <div class="row results-empty">
         <div class="col-xs-12">
-          <p class="lead"><em>Alas: your search returned no results.</em></p>
+          <p class="lead text-color-normal"><em>Alas: your search returned no results.</em></p>
         </div>
       </div>
     {% endfor %}
