@@ -35,7 +35,6 @@ node_modules/
 .DS_Store
 *.sublime-project
 *.sublime-workspace
-search.py
 staticfiles/
 heroku_secret_key
 package.json
