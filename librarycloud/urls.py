@@ -23,10 +23,6 @@ urlpatterns = patterns('',
 
     # User management
     url(r'^users/', include("users.urls", namespace="users")),
-    url(r'^accounts/', include('allauth.urls')),
-
-    # Uncomment the next line to enable avatars
-    url(r'^avatar/', include('avatar.urls')),
 
     # Your stuff: custom urls go here
 

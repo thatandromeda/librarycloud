@@ -38,10 +38,6 @@ class Common(Configuration):
     )
     THIRD_PARTY_APPS = (
         'crispy_forms',  # Form layouts
-        'avatar',  # for user avatars
-        'allauth',  # registration
-        'allauth.account',  # registration
-        'allauth.socialaccount',  # registration
     )
 
     # Apps specific for this project go here.
@@ -149,8 +145,6 @@ class Common(Configuration):
     # See: https://docs.djangoproject.com/en/dev/ref/settings/#template-context-processors
     TEMPLATE_CONTEXT_PROCESSORS = (
         'django.contrib.auth.context_processors.auth',
-        "allauth.account.context_processors.account",
-        "allauth.socialaccount.context_processors.socialaccount",
         'django.core.context_processors.debug',
         'django.core.context_processors.i18n',
         'django.core.context_processors.media',
