@@ -3,6 +3,10 @@
   color: white;
 }
 
+#project .results-empty {
+  color: #333;
+}
+
 .row {
   margin-bottom: 10px;
 }

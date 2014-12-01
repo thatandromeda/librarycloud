@@ -51,7 +51,7 @@ class Production(Common):
     # SITE CONFIGURATION
     # Hosts/domain names that are valid for this site
     # See https://docs.djangoproject.com/en/1.6/ref/settings/#allowed-hosts
-    ALLOWED_HOSTS = ["intersectional-librarycloud.herokuapp.com"]
+    ALLOWED_HOSTS = ["*"]
     # END SITE CONFIGURATION
 
     INSTALLED_APPS += ("gunicorn", )

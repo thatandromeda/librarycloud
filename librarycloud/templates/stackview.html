@@ -1,7 +1,15 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 
 {% block content %}
   <div id="project">
+    <div class="row">
+      <form action="" method="post">{% csrf_token %}
+          {% crispy form %}
+          <input type="submit" value="Search subjects" class="btn btn-large" />
+      </form>
+    </div>
+    <hr />
     <div class="row">
         <div class="col-sm-6 col-xs-12 titlecard">
           <h2><span class="badge pull-right">stackscore</span>title</h2>
@@ -9,9 +17,15 @@
             <li>subjects</li>
           </ul>
         </div>
-        <div class="col-sm-2 col-xs-4 ism1 grey"></div>
-        <div class="col-sm-2 col-xs-4 ism2 grey"></div>
-        <div class="col-sm-2 col-xs-4 ism3 grey"></div>
+        <div class="col-sm-2 col-xs-4 ism1">
+          <p class="lead">women</p>
+        </div>
+        <div class="col-sm-2 col-xs-4 ism2">
+          <p class="lead">african-americans</p>
+        </div>
+        <div class="col-sm-2 col-xs-4 ism3">
+          <p class="lead">lgbt</p>          
+        </div>
     </div>
     <hr />
     {% for result in results %}
@@ -25,9 +39,15 @@
             {% endfor %}
           </ul>
         </div>
-        <div class="col-sm-2 col-xs-4 ism1 grey"></div>
-        <div class="col-sm-2 col-xs-4 ism2 grey"></div>
-        <div class="col-sm-2 col-xs-4 ism3 grey"></div>
+        <div class="col-sm-2 col-xs-4 ism1{% if not result.ism1 %} grey{% endif %}"></div>
+        <div class="col-sm-2 col-xs-4 ism2{% if not result.ism2 %} grey{% endif %}"></div>
+        <div class="col-sm-2 col-xs-4 ism3{% if not result.ism3 %} grey{% endif %}"></div>
+      </div>
+    {% empty %}
+      <div class="row results-empty">
+        <div class="col-xs-12">
+          <p class="lead"><em>Alas: your search returned no results.</em></p>
+        </div>
       </div>
     {% endfor %}
   </div>
