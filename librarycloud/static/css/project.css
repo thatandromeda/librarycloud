@@ -32,3 +32,16 @@ body {
 .ism3 {
   background-color: #e86f54;
 }
+
+.ism1.grey {
+  background-color: #ccc;  
+}
+
+.ism2.grey {
+  background-color: #ddd;  
+}
+
+.ism3.grey {
+  background-color: #eee;  
+}
+
