@@ -39,3 +39,5 @@ heroku_secret_key
 package.json
 build/
 *.sqlite3
+staticfiles/
+!staticfiles/humans.txt
