@@ -1,5 +1,10 @@
-# This file is here because many Platforms as a Service look for
-#	requirements.txt in the root directory of a project.
-pylibmc==1.2.3
-django-heroku-memcacheify==0.7
--r requirements/production.txt
+Django==1.7
+SQLAlchemy==0.9.8
+dj-database-url==0.3.0
+django-postgrespool==0.3.0
+gunicorn==19.1.1
+psycopg2==2.5.4
+whitenoise==1.0.3
+wsgiref==0.1.2
+requests==2.5.0
+django-crispy-forms==1.4.0

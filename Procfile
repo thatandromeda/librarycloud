@@ -1,1 +1,1 @@
-web: gunicorn librarycloud.wsgi:application
+web: gunicorn librarycloud.wsgi --log-file -

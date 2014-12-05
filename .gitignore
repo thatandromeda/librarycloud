@@ -38,3 +38,5 @@ node_modules/
 staticfiles/
 heroku_secret_key
 package.json
+build/
+*.sqlite3
