@@ -8,44 +8,46 @@
 
       <p class="text-color-normal">Or try your favorite subject:</p>
       <form action="" method="post">{% csrf_token %}
-          {% crispy form %}
-          <input type="submit" value="Search subjects" class="btn btn-large" />
+        {% crispy form %}
+        <input type="submit" value="Search subjects" class="btn btn-large" />
       </form>
     </div>
     <hr />
     <div class="row">
-        <div class="col-sm-6 col-xs-12 titlecard">
-          <h2><span class="badge pull-right">stackscore</span>title</h2>
-          <ul class="list-unstyled">
-            <li>subjects</li>
-          </ul>
-        </div>
-        <div class="col-sm-2 col-xs-4 ism1">
-          <p class="lead">women</p>
-        </div>
-        <div class="col-sm-2 col-xs-4 ism2">
-          <p class="lead">african-americans</p>
-        </div>
-        <div class="col-sm-2 col-xs-4 ism3">
-          <p class="lead">lgbt</p>          
-        </div>
+      <div class="col-sm-6 col-xs-12 titlecard">
+        <h2><span class="badge pull-right">stackscore</span>title</h2>
+        <ul class="list-unstyled">
+          <li>subjects</li>
+        </ul>
+      </div>
+      <div class="col-sm-2 col-xs-4 ism1">
+        <p class="lead">women</p>
+      </div>
+      <div class="col-sm-2 col-xs-4 ism2">
+        <p class="lead">african-americans</p>
+      </div>
+      <div class="col-sm-2 col-xs-4 ism3">
+        <p class="lead">lgbt</p>          
+      </div>
     </div>
     <hr />
     {% for result in results %}
-      <div class="row">
-        <div class="col-sm-6 col-xs-12 titlecard">
-          <h2><span class="badge pull-right">{{ result.stackscore }}</span>{{ result.title }}</h2>
+      {% if result.title %}
+        <div class="row">
+          <div class="col-sm-6 col-xs-12 titlecard">
+            <h2><span class="badge pull-right">{{ result.stackscore }}</span>{{ result.title }}</h2>
 
-          <ul class="list-unstyled">
-            {% for subject in result.subjects %}
-              <li>{{ subject }}</li>
-            {% endfor %}
-          </ul>
+            <ul class="list-unstyled">
+              {% for subject in result.subjects %}
+                <li>{{ subject }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+          <div class="col-sm-2 col-xs-4 ism1{% if not result.ism1 %} grey{% endif %}"></div>
+          <div class="col-sm-2 col-xs-4 ism2{% if not result.ism2 %} grey{% endif %}"></div>
+          <div class="col-sm-2 col-xs-4 ism3{% if not result.ism3 %} grey{% endif %}"></div>
         </div>
-        <div class="col-sm-2 col-xs-4 ism1{% if not result.ism1 %} grey{% endif %}"></div>
-        <div class="col-sm-2 col-xs-4 ism2{% if not result.ism2 %} grey{% endif %}"></div>
-        <div class="col-sm-2 col-xs-4 ism3{% if not result.ism3 %} grey{% endif %}"></div>
-      </div>
+      {% endif %}
     {% empty %}
       <div class="row results-empty">
         <div class="col-xs-12">

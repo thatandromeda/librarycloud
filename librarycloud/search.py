@@ -62,7 +62,7 @@ class Request():
     def __init__(self, query=None):
         # Build individual url fragments for different search criteria
         url_parts = []
-        self.base_url = 'http://api.lib.harvard.edu/v2/items.json?'
+        self.base_url = 'http://api.lib.harvard.edu/v2/items.json?q='
         if query:
             url_parts.append(self._singleValueFormatter('subject.topic', query))
         # Now string all the chunks together
@@ -99,35 +99,39 @@ class Results():
         #self.count = response['pagination']['numFound']
         self.items = []
         if 'items' in response.keys():
-            self.items_raw = [item for item in response['items']]
+            self.items_raw = response['items']['mods']
 
             # Munge the raw results to get info we need in an easy format.
             for item in self.items_raw:
+                print item
+                print '\n\n'
                 info = {}
 
                 # Get the title.
                 try:
-                    title = item['mods']['titleInfo']['title']
-                except TypeError:
-                    title = item['mods']['titleInfo'][0]['title']
+                    title = item['titleInfo'][0]['title']
+                except KeyError:
+                    title = None
                 info['title'] = title
 
                 # Get the stackscore.
-                stackscore = \
-                    item['mods']['extension']['usageData']['stackScore']
+                try:
+                    stackscore = item['extension']['usageData']['stackScore']
+                except KeyError:
+                    stackscore = None
                 info['stackscore'] = stackscore
 
-                # Get the subjects. Note that this is a list of dicts, where each
-                # dict can have a variety of attributes; authority and topic are
-                # typical, but not required.
-                subjects_raw = item['mods']['subject']
+                # Get the subjects. Note that this is a list of dicts, where
+                # each dict can have a variety of attributes; authority and topic
+                # are typical, but not required.
+                subjects_raw = item['subject']
                 info['subjects_raw'] = subjects_raw
 
                 # Get an actually useful list of subjects.
                 subjects = []
                 for subject in subjects_raw:
-                    if 'authority' in subject.keys():
-                        if subject['authority'] == 'lcsh':
+                    if '@authority' in subject.keys():
+                        if subject['@authority'] == 'lcsh':
                             # Only bother with one type for now, so as to avoid
                             # duplication.
                             if 'topic' in subject.keys():
