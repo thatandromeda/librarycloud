@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
+{% load static %}
 
 {% block content %}
   <div id="project">
@@ -57,3 +58,13 @@
     {% endfor %}
   </div>
 {% endblock content %}
+
+{% block javascript %}
+  <!-- Le javascript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+  <script src="{% static 'js/project.js' %}"></script>
+{% endblock javascript %}
